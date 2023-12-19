@@ -1,0 +1,14 @@
+{
+  "name": "ssn_team",
+  "version": "1.0.0",
+  "description": "Development of a web app for task management of team members in the SSN",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
