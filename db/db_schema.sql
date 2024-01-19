@@ -1,4 +1,5 @@
--- '팀원' 테이블 생성
+
+-- 'TeamMembers' 테이블 (변경 없음)
 CREATE TABLE TeamMembers (
     MemberID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
@@ -6,39 +7,61 @@ CREATE TABLE TeamMembers (
     Email VARCHAR(255) UNIQUE
 );
 
--- '과업' 테이블 생성
+-- 'Tasks' 테이블 수정
 CREATE TABLE Tasks (
     TaskID INT AUTO_INCREMENT PRIMARY KEY,
-    Title VARCHAR(255) NOT NULL,
-    Description TEXT,
+    MemberID INT,
     StartDate DATE,
     DueDate DATE,
-    Priority ENUM('Low', 'Medium', 'High'),
-    Status ENUM('In Progress', 'Completed', 'On Hold'),
-    AssigneeID INT,
-    FOREIGN KEY (AssigneeID) REFERENCES TeamMembers(MemberID)
+    Requester VARCHAR(255),
+    TaskType VARCHAR(50),
+    Priority VARCHAR(50),
+    Description TEXT,
+    FOREIGN KEY (MemberID) REFERENCES TeamMembers(MemberID)
 );
 
 -- 'Reports' 테이블 생성
 CREATE TABLE Reports (
-    ReportID INT AUTO_INCREMENT PRIMARY KEY,  -- 보고서의 고유 ID, 자동 증가
-    Title VARCHAR(255) NOT NULL,             -- 보고서의 제목
-    Content TEXT NOT NULL,                   -- 보고서의 내용
-    CreationDate DATE NOT NULL,              -- 보고서 작성 날짜
-    MemberID INT,                            -- 보고서를 작성한 팀원의 ID (TeamMembers 테이블 참조)
-    FOREIGN KEY (MemberID) REFERENCES TeamMembers(MemberID) -- 외래키 설정: TeamMembers 테이블의 MemberID 참조
+    ReportID INT AUTO_INCREMENT PRIMARY KEY,
+    MemberID INT,
+    SubmissionDate DATE,
+    ReportContent TEXT,
+    FOREIGN KEY (MemberID) REFERENCES TeamMembers(MemberID)
 );
-
 
 -- 'Documents' 테이블 생성
 CREATE TABLE Documents (
-    DocumentID INT AUTO_INCREMENT PRIMARY KEY, -- 문서의 고유 ID, 자동 증가
-    Name VARCHAR(255) NOT NULL,               -- 문서의 이름
-    Type VARCHAR(255),                        -- 문서의 유형 (예: 신청서, 요청서 등)
-    Path VARCHAR(255) NOT NULL,               -- 문서 파일의 저장 경로
-    TaskID INT,                               -- 문서와 관련된 과업의 ID (Tasks 테이블 참조)
-    FOREIGN KEY (TaskID) REFERENCES Tasks(TaskID) -- 외래키 설정: Tasks 테이블의 TaskID 참조
+    DocumentID INT AUTO_INCREMENT PRIMARY KEY,
+    TaskID INT,
+    DocumentName VARCHAR(255),
+    DocumentPath TEXT,
+    FOREIGN KEY (TaskID) REFERENCES Tasks(TaskID)
 );
 
+-- 'TaskHistory' 테이블 생성
+CREATE TABLE TaskHistory (
+    HistoryID INT AUTO_INCREMENT PRIMARY KEY,
+    TaskID INT,
+    UpdateDate DATE,
+    Status VARCHAR(100),
+    Comments TEXT,
+    FOREIGN KEY (TaskID) REFERENCES Tasks(TaskID)
+);
 
+-- 'Leave' 테이블 생성
+CREATE TABLE `Leave` (
+    LeaveID INT AUTO_INCREMENT PRIMARY KEY,
+    MemberID INT,
+    LeaveDate DATE,
+    LeaveType VARCHAR(100),
+    Reason TEXT,
+    FOREIGN KEY (MemberID) REFERENCES TeamMembers(MemberID)
+);
 
+-- 'USERS' 테이블 생성
+CREATE TABLE Users (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(255) NOT NULL,
+    PasswordHash VARCHAR(255) NOT NULL,
+    Email VARCHAR(255)
+);

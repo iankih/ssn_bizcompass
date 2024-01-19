@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "9bf36081-fbca-4a9f-8d4a-b4cd29c0ac03",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32329752",
+		"_collection_link": "https://crimson-robot-121750.postman.co/workspace/bizcompass~eeae4615-0c53-49c7-b6da-3472a15af6bc/collection/32329752-9bf36081-fbca-4a9f-8d4a-b4cd29c0ac03?action=share&source=collection_link&creator=32329752"
+	},
+	"item": [
+		{
+			"name": "로그인",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "관리자 로그인",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "과업등록",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "회원가입",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "사용자 과업조회",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "관리자과업조회",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "관리자 사용자 조회",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "사용자 과업 이력 추가",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "사용자 과업 이력 조회",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
